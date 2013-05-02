@@ -91,6 +91,9 @@ set cscopeprg=gtags-cscope
 set cscopetag
 "set cscopequickfix=c-,d-,e-,f-,g0,i-,s-,t-
 au BufWritePost *.[ch] call UpdateGtags(expand('<afile>'))
+au BufWritePost *.[ch]pp call UpdateGtags(expand('<afile>'))
+au BufWritePost *.[ch]xx call UpdateGtags(expand('<afile>'))
+au BufWritePost *.cc call UpdateGtags(expand('<afile>'))
 function! UpdateGtags(f)
   let dir = fnamemodify(a:f, ':p:h')
   exe 'silent !cd ' . dir . ' && global -u &> /dev/null &'
@@ -112,8 +115,8 @@ if (!empty(db))
      nmap <C-c>t :cs find t <C-R>=expand("<cword>")<CR><CR>
      nmap <C-c>e :cs find e <C-R>=expand("<cword>")<CR><CR>
      nmap <C-c>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-     nmap <C-c>i :cs find i <C-R>=expand("<cfile>")<CR>$<CR>
-     nmap <C-c>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+     nmap <C-c>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
+     "nmap <C-c>d :cs find d <C-R>=expand("<cword>")<CR><CR>
   " else add database pointed to by environment
   elseif $CSCOPE_DB != ""
      cs add $CSCOPE_DB
@@ -180,9 +183,14 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_regexp = 1
 
 "===============================
+"Easymotion
+"===============================
+
+"===============================
 "NerdComment
 "===============================
 filetype plugin on
+
 "===============================
 "NerdTree
 "===============================
