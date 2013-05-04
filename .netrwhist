@@ -1,4 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/zhiqiang.xu/Developer/i800JB/bootable/bootloader/lk/make'
 let g:netrw_dirhist_2='/home/zhiqiang.xu/.vim'
+let g:netrw_dirhist_3='/Users/xeonxu/Source/vim_configs/python'
+let g:netrw_dirhist_4='/Users/xeonxu/Source/vim_configs'
