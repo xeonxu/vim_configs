@@ -1,3 +1,5 @@
+source ~/.vim/bundles.vim
+
 let mapleader=","
 set nocompatible
 syntax on
@@ -181,6 +183,16 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 "===============================
 let g:ctrlp_by_filename = 1
 let g:ctrlp_regexp = 1
+let g:ctrlp_working_path_mode=''
+let g:ctrlp_root_markers='.ctrlp'
+
+"===============================
+"tabbar
+"===============================
+noremap tl :tabnext<CR>
+noremap th :tabprev<CR>
+noremap tn :tabnew<CR>
+noremap td :tabclose<CR>"
 
 "===============================
 "Easymotion
@@ -194,8 +206,9 @@ filetype plugin on
 "===============================
 "NerdTree
 "===============================
-"map <F9> :ToggleNERDTree<CR>
-"autocmd VimEnter * NERDTree
+map <F9> :NERDTreeToggle<CR>
+
+"
 "autocmd VimEnter * wincmd p
 "" NERDTree configuration
 "let NERDTreeWinSize=35
