@@ -95,6 +95,7 @@ set cscopetag
 au BufWritePost *.[ch] call UpdateGtags(expand('<afile>'))
 au BufWritePost *.[ch]pp call UpdateGtags(expand('<afile>'))
 au BufWritePost *.[ch]xx call UpdateGtags(expand('<afile>'))
+au BufWritePost *.java call UpdateGtags(expand('<afile>'))
 au BufWritePost *.cc call UpdateGtags(expand('<afile>'))
 function! UpdateGtags(f)
   let dir = fnamemodify(a:f, ':p:h')
