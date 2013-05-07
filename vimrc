@@ -184,6 +184,8 @@ nmap <silent> <leader>lw :LUWalk<cr>
 "===============================
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+map <F11> :YcmDiags<CR>
+map <F12> :YcmForceCompileAndDiagnostics<CR>
 
 "===============================
 "ctrlp
