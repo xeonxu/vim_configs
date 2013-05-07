@@ -50,11 +50,10 @@ if (!empty(pj_file))
 else
   let g:LookupFile_TagExpr=string("./filenametags")
 endif
-echo "Generating Tags..."
-redraw
+exec "silent !echo 'Generating Tags...'"
 exec "silent !~/.vim/bin/mktags.sh"
-echo "DONE!"
-redraw
+redraw!
+echo "Done!"
 endfunction
 "au BufEnter /* call LoadProject()
 nmap <silent> <leader>lp :call LoadProject()<cr>
