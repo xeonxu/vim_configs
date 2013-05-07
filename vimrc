@@ -35,6 +35,8 @@ imap <ESC>oD <ESC>hi
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
 "按,sv重载配置文件
 nmap <silent> <leader>sv :so $MYVIMRC<CR>:echom 'Resourced vimrc file'<CR>
+"When .vimrc is edited, reload it 
+autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 colorscheme desert
 
 function! LoadProject()
