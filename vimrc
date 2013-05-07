@@ -58,19 +58,19 @@ endfunction
 "au BufEnter /* call LoadProject()
 nmap <silent> <leader>lp :call LoadProject()<cr>
 
-" 右下角显示光标位置
-"set ruler
-" 总是显示状态行
+"" 右下角显示光标位置
+set ruler
+"" 总是显示状态行
 set laststatus=2
-" 自定义状态行
-set statusline=
-set statusline=%F%m%r%h%w
-set statusline+=[%L]
-set statusline+=[%{strlen(&ff)?&ff:'none'}]
-set statusline+=%=
-set statusline+=0x%-8B
-set statusline+=%-14(%l,%c%V%)
-set statusline+=%<%P
+"" 自定义状态行
+"set statusline=
+"set statusline=%F%m%r%h%w
+"set statusline+=[%L]
+"set statusline+=[%{strlen(&ff)?&ff:'none'}]
+"set statusline+=%=
+"set statusline+=0x%-8B
+"set statusline+=%-14(%l,%c%V%)
+"set statusline+=%<%P
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " cscope setting
