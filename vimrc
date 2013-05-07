@@ -26,6 +26,11 @@ set wildmenu
 set showmode
 set t_Co=256
 set backspace=indent,eol,start
+imap <ESC>oA <ESC>ki
+imap <ESC>oB <ESC>ji
+imap <ESC>oC <ESC>li
+imap <ESC>oD <ESC>hi
+
 "按,ev打开配置文件
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
 "按,sv重载配置文件
