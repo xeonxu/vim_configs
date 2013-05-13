@@ -8,10 +8,10 @@ set hlsearch
 set showmatch
 set incsearch
 set ts=4
-set softtabstop=4
-set shiftwidth=4
+"set softtabstop=4
+"set shiftwidth=4
 set smarttab
-set expandtab
+"set expandtab
 set cindent
 set smartindent
 "set autochdir
@@ -25,6 +25,7 @@ set autowrite  " Writes on make/shell commands
 set wildmenu
 set showmode
 set t_Co=256
+let g:Powerline_colorscheme = 'solarized256'
 set backspace=indent,eol,start
 imap <ESC>oA <ESC>ki
 imap <ESC>oB <ESC>ji
@@ -39,6 +40,21 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>:echom 'Resourced vimrc file'<CR>
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 colorscheme desert
 
+let g:ProjectSession_File=""
+
+fu! SaveSess()
+  set sessionoptions-=curdir
+  set sessionoptions+=sesdir
+  set sessionoptions+=slash
+  set sessionoptions+=unix
+  "set sessionoptions-=options
+  execute 'mksession! '.g:ProjectSession_File
+endfunction
+
+fu! RestoreSess()
+  execute 'source '.g:ProjectSession_File
+endfunction
+
 function! LoadProject()
 let pj_file = findfile("filenametags", ".;")
 if (!empty(pj_file))
@@ -50,6 +66,21 @@ if (!empty(pj_file))
 else
   let g:LookupFile_TagExpr=string("./filenametags")
 endif
+if (!empty(path))
+  cd path
+endif
+
+let session_file = "./session.vim"
+let g:ProjectSession_File=session_file
+if filereadable(session_file)
+  call RestoreSess()
+else
+  call SaveSess()
+endif
+
+autocmd VimLeave * call SaveSess()
+autocmd VimEnter * call RestoreSess()
+
 exec "silent !echo 'Generating Tags...'"
 exec "silent !~/.vim/bin/mktags.sh"
 redraw!
@@ -138,8 +169,9 @@ au BufEnter /* call LoadCscope()
 " use F8 to toggle taglist
 nnoremap <silent> <F8> :TlistToggle<CR>
 let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_Close_On_Select=1
+let Tlist_Close_On_Select=0
 let Tlist_Show_One_File = 1
+let Tlist_Exit_OnlyWindow=1
 
 """"""""""""""""""""""""""""""
 " lookupfile setting

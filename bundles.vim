@@ -14,7 +14,7 @@ call vundle#rc()
     Bundle 'https://github.com/vim-scripts/genutils.git'
     Bundle 'git://github.com/jistr/vim-nerdtree-tabs'
     Bundle 'git://github.com/majutsushi/tagbar'
-    Bundle 'git://github.com/kien/ctrlp.vim'
+    "Bundle 'git://github.com/kien/ctrlp.vim'
     Bundle 'git://github.com/Lokaltog/vim-powerline'
     Bundle 'git://github.com/int3/vim-taglist-plus'
     Bundle 'git://github.com/scrooloose/syntastic.git'
