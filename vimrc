@@ -7,18 +7,7 @@ set nu
 set hlsearch
 set showmatch
 set incsearch
-set ts=4
-"set softtabstop=4
-"set shiftwidth=4
-set smarttab
-"set expandtab
-set cindent
-set smartindent
-"set autochdir
 set ignorecase
-set enc=utf-8
-set termencoding=utf-8
-set fileencoding=utf-8
 set showcmd
 set history=256  " Number of things to remember in history.
 set autowrite  " Writes on make/shell commands
@@ -32,13 +21,29 @@ imap <ESC>oB <ESC>ji
 imap <ESC>oC <ESC>li
 imap <ESC>oD <ESC>hi
 
-"按,ev打开配置文件
+",ev to open config file
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
-"按,sv重载配置文件
+",sv to reload config file
 nmap <silent> <leader>sv :so $MYVIMRC<CR>:echom 'Resourced vimrc file'<CR>
 "When .vimrc is edited, reload it 
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 colorscheme desert
+
+function! LoadSetting()
+let pj_file = findfile("project.vim", ".;")
+if (!empty(pj_file))
+  let path = strpart(pj_file, 0, match(pj_file, "/project.vim$"))
+  " add any database in current directory
+  if filereadable(pj_file)
+    exec "so ".pj_file
+  else
+    exec "so ~/.vim/project_default.vim"
+  endif
+else
+  exec "so ~/.vim/project_default.vim"
+endif
+endfunction
+autocmd VimEnter /* call LoadSetting()
 
 let g:ProjectSession_File=""
 
@@ -47,7 +52,7 @@ fu! SaveSess()
   set sessionoptions+=sesdir
   set sessionoptions+=slash
   set sessionoptions+=unix
-  "set sessionoptions-=options
+  set sessionoptions-=options
   execute 'mksession! '.g:ProjectSession_File
 endfunction
 
@@ -79,10 +84,10 @@ else
 endif
 
 autocmd VimLeave * call SaveSess()
-autocmd VimEnter * call RestoreSess()
 
 exec "silent !echo 'Generating Tags...'"
 exec "silent !~/.vim/bin/mktags.sh"
+call LoadSetting()
 redraw!
 echo "Done!"
 endfunction
