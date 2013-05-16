@@ -45,6 +45,13 @@ endif
 endfunction
 autocmd VimEnter /* call LoadSetting()
 
+
+"===============================
+"Session Support
+"===============================
+let g:session_autoload='no'
+let g:session_autosave='no'
+let g:session_directory="./"
 let g:ProjectSession_File=""
 
 fu! SaveSess()
@@ -94,9 +101,7 @@ endfunction
 "au BufEnter /* call LoadProject()
 nmap <silent> <leader>lp :call LoadProject()<cr>
 
-"" 右下角显示光标位置
-"set ruler
-"" 总是显示状态行
+" Always show status bar.
 set laststatus=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -152,6 +157,7 @@ let Tlist_Exit_OnlyWindow=1
 """"""""""""""""""""""""""""""
 " lookupfile setting
 """"""""""""""""""""""""""""""
+let g:LookupFile_SearchForBufsInTabs = 1
 let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
 let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
 let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
@@ -269,8 +275,3 @@ filetype plugin on
 "===============================
 map <F9> :NERDTreeToggle<CR>
 
-"
-"autocmd VimEnter * wincmd p
-"" NERDTree configuration
-"let NERDTreeWinSize=35
-"map  to toggle NERDTree window

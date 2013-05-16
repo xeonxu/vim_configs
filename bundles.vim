@@ -19,3 +19,4 @@ call vundle#rc()
     Bundle 'git://github.com/int3/vim-taglist-plus'
     Bundle 'git://github.com/scrooloose/syntastic.git'
     Bundle 'git://github.com/Valloric/YouCompleteMe.git'
+    Bundle 'https://github.com/xolox/vim-session'
