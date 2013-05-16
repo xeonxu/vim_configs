@@ -14,6 +14,7 @@ set autowrite  " Writes on make/shell commands
 set wildmenu
 set showmode
 set t_Co=256
+set mouse=a
 let g:Powerline_colorscheme = 'solarized256'
 set backspace=indent,eol,start
 imap <ESC>oA <ESC>ki
