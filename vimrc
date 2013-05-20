@@ -99,6 +99,7 @@ call LoadSetting()
 redraw!
 echo "Done!"
 endfunction
+
 "au BufEnter /* call LoadProject()
 nmap <silent> <leader>lp :call LoadProject()<cr>
 
